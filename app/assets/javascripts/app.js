@@ -18,7 +18,15 @@ angular.module('flapperNews', ['ui.router', 'templates'])
 				// and a template
 				templateUrl: 'home/_home.html',
 				// and should be controlled by MainCtrl
-				controller: 'MainCtrl'
+				controller: 'MainCtrl',
+				// the resolve property ensures that anytime the home state is entered
+				// it will automatically query all posts from the back end before the state is loaded
+				resolve: {
+					postPromise: ['posts', function(posts){
+						return posts.getAll();
+					}] 
+				}
+
 			})
 			// the posts state configuration
 			.state('posts', {
