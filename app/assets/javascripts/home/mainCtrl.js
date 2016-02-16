@@ -1,4 +1,4 @@
-angular.module('flapperNews', ['ui.router', 'templates'])
+angular.module('flapperNews')
 .controller('MainCtrl', [
 	'$scope',
 	//this injects posts service into the main controller

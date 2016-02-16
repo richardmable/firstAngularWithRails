@@ -1,5 +1,5 @@
 
-angular.module('flapperNews', ['ui.router', 'templates'])
+angular.module('flapperNews')
 
 .controller('PostsCtrl', [
 	'$scope',
