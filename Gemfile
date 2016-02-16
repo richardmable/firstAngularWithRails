@@ -18,6 +18,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #for the respond_to feature
 gem 'responders', '~> 2.0'
 
+#for sending cookies to Angular and validating the header
+gem 'angular_rails_csrf'
+
 
 
 

@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
 	#create a new post
 	def create
-		respond_with Post.create
+		respond_with Post.create(post_params)
 	end
 
 	#show a particular post via params 

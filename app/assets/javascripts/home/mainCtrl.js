@@ -11,12 +11,15 @@ angular.module('flapperNews')
 		$scope.posts = posts.posts;
 		// the add posts function
 		$scope.addPost = function(){
-			$scope.posts.push({
+		if(!$scope.title || $scope.title === "") { return; }
+			//here is where a post is saved to the DB
+			posts.create({
 				title: $scope.title,
 				link: $scope.link,
-				upvotes: 0,
-				comments: []
-			})
+			});
+			//These reset the text fields to blank after submission
+			$scope.title = '';
+			$scope.link = '';
 		};
 	
 		$scope.incrementUpvotes = function(post){
