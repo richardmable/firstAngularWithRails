@@ -5,6 +5,19 @@ Rails.application.routes.draw do
   # this sets the route of the set to the custom action that serves the Angular app
   # in the application controller.
   root 'application#angular'
+  #using 'only' to specify which routes to create
+  resources :posts, only: [:create, :index, :show] do
+    resources :comments, only: [:show, :create] do
+      #member block so that our url params map to :id instead of :post_id
+      member do
+        put '/upvote' => 'comments#upvote'
+      end
+    end
+
+    member do
+      put '/upvote' => 'posts#upvote'
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
