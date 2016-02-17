@@ -23,8 +23,8 @@ angular.module('flapperNews')
 		};
 	
 		$scope.incrementUpvotes = function(post){
-			// increment that post's upvotes by 1
-			post.upvotes += 1;
+			// call the upvote method in the posts service
+			posts.upvote(post);
 		};
 
 }]);

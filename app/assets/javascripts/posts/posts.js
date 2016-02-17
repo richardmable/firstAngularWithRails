@@ -26,6 +26,16 @@ angular.module('flapperNews')
 			o.posts.push(data);
 		})
 	}
+	//method to upvote the post
+	o.upvote = function(post){
+		// put method to upvote a post into the DB
+		return $http.put('/posts/' + post.id + '/upvote.json').success(function(data){
+			//when the call returns succesfully, update the local copy to relect the changes
+			posts.upvotes += 1;
+		});
+	}
+
+	o.
 	//return the var o object so that it is exposed to any other Angular module that needs to inject it
 	//by exporting an object that contains the posts array we can add new methods and objects to our services in the future
  return o;
