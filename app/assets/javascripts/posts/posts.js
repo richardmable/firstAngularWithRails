@@ -30,12 +30,23 @@ angular.module('flapperNews')
 	o.upvote = function(post){
 		// put method to upvote a post into the DB
 		return $http.put('/posts/' + post.id + '/upvote.json').success(function(data){
-			//when the call returns succesfully, update the local copy to relect the changes
+			//when the call returns successfully, update the local copy to relect the changes
 			posts.upvotes += 1;
 		});
 	}
-
-	o.
+	// method to grab a single post from the server
+	o.get = function(id){
+		// .then calls one of the success or error callbacks asynchronously as soon as a result is available
+		// it returns a new promise which is resolved or rejected via the return value of the successCallback, errorCallback
+		return $http.get('/posts/' + id + '.json').then(function(res){
+			return res.data;
+		});
+	}
+	// method to add a comment to a post
+	o.addComment = function(id, comment){
+		return $http.post('/posts/' + id + '/comments.json', commment);
+	};
+	
 	//return the var o object so that it is exposed to any other Angular module that needs to inject it
 	//by exporting an object that contains the posts array we can add new methods and objects to our services in the future
  return o;

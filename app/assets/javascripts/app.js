@@ -33,7 +33,20 @@ angular.module('flapperNews', ['ui.router', 'templates'])
 				// brackets around id to indicate it is a route parameter
 				url: '/posts/{id}',
 				templateUrl: 'posts/_posts.html',
-				controller: 'PostsCtrl'
+				controller: 'PostsCtrl',
+
+				// resolve object for the .get method in post service
+				// the Angular ui-router detects we are entering the posts state,
+				// and will then automatically query the server for the full post object
+				// including comments
+				// only after the request has returned will the state finish loading
+				// we will then inject this post object directly into the post controller
+				// rather than going through the post service
+				resolve: {
+					post: ['$stateParams', 'posts', function($stateParams, post){
+						return posts.get($stateParams.id);
+					}]
+				}
 			})
 
 		$urlRouterProvider.otherwise('home');
