@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-
+	#only allow authenticated users to create and upvote posts
+	before_filter :authenticate_user!, only: [:create, :upvote]
 	#show all the posts
 	def index
 		respond_with Post.all
@@ -7,7 +8,7 @@ class PostsController < ApplicationController
 
 	#create a new post
 	def create
-		respond_with Post.create(post_params)
+		respond_with Post.create(post_params.merge(user_id: current_user.id))
 	end
 
 	#show a particular post via params 

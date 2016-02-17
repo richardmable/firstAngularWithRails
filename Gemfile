@@ -19,6 +19,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'responders', '~> 2.0'
 
 #for sending cookies to Angular and validating the header
+# does not seem to work if 'logout' clicked, then 'login', without reloading page
 gem 'angular_rails_csrf'
 
 gem 'devise'

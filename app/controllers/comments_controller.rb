@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
+	#only allow authenticated users to create and upvote comments
+	before_filter :authenticate_user!, only: [:create, :upvote]
 
 	def create
 		# set post to the current post via params post_id
 		post = Post.find(params[:post_id])
 		# create the comment and associate it with that post with the comment params
-		comment = post.comments.create(comment_params)
+		comment = post.comments.create(comment_params.merge(user_id: current_user.id))
 		# respond with both as it is a nested resource, only last resource is returned with json
 		respond_with post, comment
 	end
