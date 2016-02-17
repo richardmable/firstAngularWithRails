@@ -16,7 +16,7 @@ angular.module('flapperNews')
 		// call the addComment method and pass in the arguments
 		$scope.addComment = function(){
 			if($scope.body === '') { return; }
-  			post.addComment(post.id, {
+  			posts.addComment(post.id, {
     			body: $scope.body,
     			author: 'user',
     			upvotes: 0
@@ -31,6 +31,6 @@ angular.module('flapperNews')
 		$scope.incrementUpvotes = function(comment){
 			posts.upvoteComment(post, comment);
 		};
-	};
+	}
 		
 ]);

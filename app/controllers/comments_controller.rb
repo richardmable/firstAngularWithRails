@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 	#the action to upvote a particular comment
 	def upvote
 		# the post is set to the params
-		post = post.find(params[:post_id])
+		post = Post.find(params[:post_id])
 		# set comment to the that comment's params
 		comment = post.comments.find(params[:id])
 		# increment that comment's upvotes

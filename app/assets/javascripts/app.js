@@ -43,7 +43,7 @@ angular.module('flapperNews', ['ui.router', 'templates'])
 				// we will then inject this post object directly into the post controller
 				// rather than going through the post service
 				resolve: {
-					post: ['$stateParams', 'posts', function($stateParams, post){
+					post: ['$stateParams', 'posts', function($stateParams, posts){
 						return posts.get($stateParams.id);
 					}]
 				}

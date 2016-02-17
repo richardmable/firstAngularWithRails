@@ -31,7 +31,7 @@ angular.module('flapperNews')
 		// put method to upvote a post into the DB
 		return $http.put('/posts/' + post.id + '/upvote.json').success(function(data){
 			//when the call returns successfully, update the local copy to relect the changes
-			posts.upvotes += 1;
+			post.upvotes += 1;
 		});
 	};
 	// method to grab a single post from the server
@@ -44,7 +44,7 @@ angular.module('flapperNews')
 	};
 	// method to add a comment to a post
 	o.addComment = function(id, comment){
-		return $http.post('/posts/' + id + '/comments.json', commment);
+		return $http.post('/posts/' + id + '/comments.json', comment);
 	};
 	// method to upvote a comment
 	o.upvoteComment = function(post, comment){
