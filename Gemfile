@@ -21,7 +21,7 @@ gem 'responders', '~> 2.0'
 #for sending cookies to Angular and validating the header
 gem 'angular_rails_csrf'
 
-
+gem 'devise'
 
 
 # Use ActiveModel has_secure_password

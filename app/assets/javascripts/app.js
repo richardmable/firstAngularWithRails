@@ -2,7 +2,8 @@
 // A note:
 // You may be wondering why we have chosen to use ui-router instead of the more standard ngRoute module - 
 // ui-router is newer and provides more flexibility and features than ngRoute. We will be using a few of these in this tutorial.
-angular.module('flapperNews', ['ui.router', 'templates'])
+// injects ui-router, Angular templates, and Devise into our Angular app
+angular.module('flapperNews', ['ui.router', 'templates', 'Devise'])
 
 // this is the Angular config function to setup a home state
 // otherwise() redirects to unspecified routes
