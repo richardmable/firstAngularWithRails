@@ -2,11 +2,11 @@
 angular.module('flapperNews')
 
 .controller('NavCtrl', [
-	$scope,
+	'$scope',
 	// inject the Auth module into the nav bar controller
 	// the Auth module comes from angular-devise Angular JS service
 	// it allows Angular to interact with Devise
-	Auth,
+	'Auth',
 
 	function($scope, Auth){
 		// this exposes the isAuthenticated and logout method to $scope
