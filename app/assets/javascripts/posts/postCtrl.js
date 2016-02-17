@@ -13,7 +13,7 @@ angular.module('flapperNews')
 		// which post we have from the post object
 		$scope.post = post;
 
-		// call the addComment function and pass in the arguments
+		// call the addComment method and pass in the arguments
 		$scope.addComment = function(){
 			if($scope.body === '') { return; }
   			post.addComment(post.id, {
@@ -25,6 +25,12 @@ angular.module('flapperNews')
   		});
   			$scope.body = '';
 		};
-	}
+		// call the upvoteComment method by calling the incrementUpvotes method (found in the view of _posts.html)
+		// passing in that comment, and then calling the upvoteComment method defined in the posts service
+		// and passing in that post and comment
+		$scope.incrementUpvotes = function(comment){
+			posts.upvoteComment(post, comment);
+		};
+	};
 		
 ]);

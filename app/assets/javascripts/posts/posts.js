@@ -25,7 +25,7 @@ angular.module('flapperNews')
 			//push the newly created post into the posts array (does not save to DB, that is in controller)
 			o.posts.push(data);
 		})
-	}
+	};
 	//method to upvote the post
 	o.upvote = function(post){
 		// put method to upvote a post into the DB
@@ -33,7 +33,7 @@ angular.module('flapperNews')
 			//when the call returns successfully, update the local copy to relect the changes
 			posts.upvotes += 1;
 		});
-	}
+	};
 	// method to grab a single post from the server
 	o.get = function(id){
 		// .then calls one of the success or error callbacks asynchronously as soon as a result is available
@@ -41,12 +41,19 @@ angular.module('flapperNews')
 		return $http.get('/posts/' + id + '.json').then(function(res){
 			return res.data;
 		});
-	}
+	};
 	// method to add a comment to a post
 	o.addComment = function(id, comment){
 		return $http.post('/posts/' + id + '/comments.json', commment);
 	};
-	
+	// method to upvote a comment
+	o.upvoteComment = function(post, comment){
+		// use the PUT method to send the post, and that post's comment, so server knows which to upvote
+		return $http.put('/posts/' + post.id + '/comments/' + comment.id + '/upvote.json').success(function(data){
+			comment.upvotes += 1;
+		});
+	};
+
 	//return the var o object so that it is exposed to any other Angular module that needs to inject it
 	//by exporting an object that contains the posts array we can add new methods and objects to our services in the future
  return o;
